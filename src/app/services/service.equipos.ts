@@ -17,7 +17,7 @@ export class ServiceEquipos {
     }
 
     findEquipo(idEquipo: number): Observable<Equipo>{
-        let request = "api/equipos/" + idEquipo;
+        let request = "api/equipos888/" + idEquipo;
         let url = environment.urlApiEquipos + request;
         return this._http.get<Equipo>(url);
     }

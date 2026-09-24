@@ -1,0 +1,15 @@
+<div>
+    <h1>LogIn Empleado</h1>
+    <form #loginForm="ngForm">
+        <label>User name</label>
+        <input type="text" name="cajausername" #cajausername
+        class="form-control"/><br/>
+        <label>Password</label>
+        <input type="number" name="cajapassword" #cajapassword
+        class="form-control"/><br/>
+        <button (click)="validarEmpleado()" class="btn btn-danger">
+            Log In
+        </button>
+    </form>
+    <h2 style="color:blue">{{mensaje}}</h2>
+</div>
