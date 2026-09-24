@@ -1,4 +1,4 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpContext } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { delay, forkJoin, Observable, Observer } from "rxjs";
 import { Equipo } from "../models/equipo";
@@ -6,6 +6,7 @@ import { environment } from "../../environments/environment.development";
 import { Jugador } from "../models/jugador";
 import { DatosEquipo } from "../models/datos.equipo";
 import { identifierName } from "@angular/compiler";
+import { SKIP_TOKEN } from "../utils/token.context";
 
 @Injectable()
 export class ServiceEquipos {
@@ -13,21 +14,27 @@ export class ServiceEquipos {
     getEquipos(): Observable<Array<Equipo>> {
         let request = "api/equipos";
         let url = environment.urlApiEquipos + request;
-        return this._http.get<Array<Equipo>>(url);
+        return this._http.get<Array<Equipo>>(url, {
+            context: new HttpContext().set(SKIP_TOKEN, true)
+        });
     }
 
     findEquipo(idEquipo: number): Observable<Equipo>{
-        let request = "api/equipos888/" + idEquipo;
+        let request = "api/equipos/" + idEquipo;
         let url = environment.urlApiEquipos + request;
-        return this._http.get<Equipo>(url);
+        return this._http.get<Equipo>(url, {
+            context: new HttpContext().set(SKIP_TOKEN, true)
+        });
     }
 
     getJugadoresEquipo(idEquipo: number): Observable<Array<Jugador>>{
         let request = "api/jugadores/jugadoresequipos/" + idEquipo;
         let url = environment.urlApiEquipos + request;
         //VAMOS A INCLUIR UN DELAY EN LA RESPUESTA
-        return this._http.get<Array<Jugador>>(url).pipe(delay(4000));
-        //return this._http.get<Array<Jugador>>(url);
+        //return this._http.get<Array<Jugador>>(url).pipe(delay(4000));
+        return this._http.get<Array<Jugador>>(url, {
+            context: new HttpContext().set(SKIP_TOKEN, true)
+        });
     }
 
     getDatosEquipo(idEquipo: number): Observable<DatosEquipo>{
