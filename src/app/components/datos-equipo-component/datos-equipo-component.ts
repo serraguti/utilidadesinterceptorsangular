@@ -21,16 +21,10 @@ export class DatosEquipoComponent implements OnInit {
   ngOnInit(): void {
     this._activeRoute.params.subscribe((params: Params) => {
       let idEquipo = parseInt(params["idequipo"]);
-      let data = new DatosEquipo();
-      //BUSCAMOS UN EQUIPO
-      this._service.findEquipo(idEquipo).subscribe(response => {
-        data.equipo = response;
+      this._service.getDatosEquipo(idEquipo).subscribe(response => {
+        this.datosEquipo = response;
+        this._cdr.detectChanges();
       })
-      this._service.getJugadoresEquipo(idEquipo).subscribe(response => {
-        data.jugadores = response;
-      })
-      this.datosEquipo = data;
-      this._cdr.detectChanges();
     })
   }
 }
