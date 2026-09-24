@@ -9,11 +9,25 @@ import { FormsModule } from '@angular/forms';
 import { FilesInternetComponent } from './components/files-internet-component/files-internet-component';
 import { ServicePostFiles } from './services/service.post.files';
 import { EjemploPdfComponent } from './components/ejemplo-pdf-component/ejemplo-pdf-component';
+import { ServiceEquipos } from './services/service.equipos';
+import { DatosEquipoComponent } from './components/datos-equipo-component/datos-equipo-component';
 
 @NgModule({
-  declarations: [App, HomeComponent, MenuComponent, FilesInternetComponent, EjemploPdfComponent],
+  declarations: [
+    App,
+    HomeComponent,
+    MenuComponent,
+    FilesInternetComponent,
+    EjemploPdfComponent,
+    DatosEquipoComponent,
+  ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
-  providers: [ServicePostFiles, provideBrowserGlobalErrorListeners(), provideHttpClient()],
+  providers: [
+    ServiceEquipos,
+    ServicePostFiles,
+    provideBrowserGlobalErrorListeners(),
+    provideHttpClient(),
+  ],
   bootstrap: [App],
 })
 export class AppModule {}

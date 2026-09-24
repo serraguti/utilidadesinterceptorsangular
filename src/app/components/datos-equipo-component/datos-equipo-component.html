@@ -1,0 +1,24 @@
+<div>
+    @if (datosEquipo){
+        <div class="card" style="width: 18rem;">
+            <img src="{{datosEquipo.equipo.imagen}}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{datosEquipo.equipo.nombre}}</h5>
+                <p class="card-text">Champions: {{datosEquipo.equipo.champions}}</p>
+            </div>
+        </div>
+        <hr/>
+        @for (player of datosEquipo.jugadores; track player){
+            <div class="card" style="width: 18rem;">
+                <img src="{{player.imagen}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{player.nombre}}</h5>
+                    <p class="card-text">Pais: {{player.pais}}</p>
+                </div>
+            </div>            
+        }
+    }@else {
+        <img src="https://media.tenor.com/5Bg1bLVpl8cAAAAM/loading-chargement.gif"
+        style="width: 250px; height: 310px; "/>
+    }
+</div>
