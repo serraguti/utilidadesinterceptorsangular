@@ -8,13 +8,12 @@ import { provideHttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { FilesInternetComponent } from './components/files-internet-component/files-internet-component';
 import { ServicePostFiles } from './services/service.post.files';
+import { EjemploPdfComponent } from './components/ejemplo-pdf-component/ejemplo-pdf-component';
 
 @NgModule({
-  declarations: [App, HomeComponent, MenuComponent, FilesInternetComponent],
+  declarations: [App, HomeComponent, MenuComponent, FilesInternetComponent, EjemploPdfComponent],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
-  providers: [
-    ServicePostFiles,
-    provideBrowserGlobalErrorListeners(), provideHttpClient()],
+  providers: [ServicePostFiles, provideBrowserGlobalErrorListeners(), provideHttpClient()],
   bootstrap: [App],
 })
 export class AppModule {}
